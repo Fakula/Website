@@ -1,0 +1,23 @@
+**Semi-Open-Source Lizenz**
+
+1. **Nutzung**: Der Code darf ausschließlich für nicht-kommerzielle Zwecke verwendet werden. 
+   -> Ich entwickle diesen Code in meiner Freizeit. Wenn jemand ihn für ein Hobbyprojekt nutzen möchte, ist das in Ordnung, solange damit keine kommerziellen Interessen verfolgt oder Gewinne erzielt werden.
+
+2. **Änderungen und Modifikationen**: Alle Änderungen am Code müssen dem ursprünglichen Autor gemeldet werden. Modifizierte Versionen dürfen nicht weitergegeben werden. 
+   -> Dies gewährleistet Transparenz und stellt sicher, dass Verbesserungen und Fehlerbehebungen zurückgemeldet werden, um Fragmentierung zu vermeiden.
+
+3. **Verteilung**: Das Forken des Codes ist nicht gestattet. Der Code darf nur in seiner Originalform weitergegeben werden. 
+   -> Dies bewahrt die Integrität des ursprünglichen Projekts und verhindert, dass abgeleitete Werke unter anderen Bedingungen verteilt werden.
+
+4. **Quellenangabe**: Bei jeder Nutzung des Codes muss der ursprüngliche Autor als Quelle angegeben werden. 
+   -> Dies stellt die Anerkennung der Arbeit des Autors sicher und fördert die Transparenz, ähnlich wie die GPL die Nennung der ursprünglichen Autoren verlangt.
+
+5. **Haftungsausschluss**: Der Code wird ohne jegliche Garantie bereitgestellt. Der Autor übernimmt keine Haftung für Schäden, die durch die Nutzung des Codes entstehen. 
+   -> Dies schützt den Autor vor rechtlichen Ansprüchen, wie es auch in der GPL der Fall ist.
+   -> Auch wenn der Code nach bestem Wissen und Gewissen geschrieben ist, können Fehler passieren.
+
+6. **Patente**: Diese Lizenz gewährt keine Rechte an Patenten, die der Autor möglicherweise besitzt. 
+   -> Dies vermeidet mögliche rechtliche Konflikte und stellt sicher, dass keine stillschweigende Patentlizenz gewährt wird.
+
+7. **Lizenzkompatibilität**: Der Code darf nicht mit anderen Projekten kombiniert werden, die unter einer inkompatiblen Lizenz stehen. 
+   -> Dies verhindert Lizenzkonflikte und stellt sicher, dass der Code nur mit kompatiblen Lizenzen kombiniert wird.
