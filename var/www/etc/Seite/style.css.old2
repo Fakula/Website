@@ -1,0 +1,185 @@
+ /* body { 
+	 border: 0.1em solid #91C99B;
+	padding-top: 1em;
+	max-width: 100em; 
+	text-align: justify; 
+	margin-left: auto;
+	margin-right: auto; 
+	font-family: Georgia, serif;
+	background-color: whitesmoke;
+	color: #4b3302;
+	outline: solid; 
+border-width: 5px;
+		} 
+ 
+*/
+	section
+ { 
+ 	width: 60em;
+	max-width: 100%;
+ 	margin: 0 auto;
+ 	margin-left: auto;
+	margin-right: auto; 
+	background-color: whitesmoke;
+	color: #4b3302;
+	overflow: hidden;
+	float : center;
+ 	 }
+
+	  h1 {
+		width:99%;
+	   float: inherit;	
+		color: #4b3302;
+		font-variant: small-caps;
+		font-family: Garamond, serif;
+		font-size: 330%;
+		text-align: center;
+		background-color: whitesmoke;
+		margin-top: 0;
+		margin-left: auto;
+		margin-right: auto;
+	}
+h2 {
+	width:99%;
+   float: inherit;	
+	color: #4b3302;
+	font-variant: small-caps;
+	font-family: Garamond, serif;
+	font-size: 220%;
+	text-align: center;
+	background-color: whitesmoke;
+	margin-top: 0;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+h3 {
+	clear: both;
+	width: (100% - 0.4em) ;
+	padding: 0.2em; 
+	float: inherit;
+	background-color: whitesmoke;
+	text-align: center;
+	margin-top: 8%;
+	margin-bottom: 3%;
+}
+
+
+/* Separat vom Rest damit der CSS-Validator nicht durcheinanderkommt */
+body > ul > li > a:first-child { -moz-border-radius: 10px; }
+h2 { -moz-border-radius: 1em; }
+h3 { -moz-border-radius: 1em; }
+			
+.link-links, .link-mitte ,.link-rechts
+	{
+		width: 100%;
+		float: left;			
+		text-align: left;
+		clear : both;
+		border-style: solid;
+
+	}
+			
+.layout-wrapper {
+    display: flex;
+    flex-direction: row; /* Stellt sicher, dass die Elemente nebeneinander angezeigt werden */
+}	
+				
+.link-liste {
+    width: 15%;
+    overflow: hidden;
+	max-width: 15%;
+    outline: solid;
+    border-width: 5px;
+    margin: 0%;
+	margin-right: 80%;
+    box-sizing: border-box;
+    order: 1; /* Stelle die link-liste an die erste Position */
+    position: fixed; /* Fixiert die link-liste */
+    height: 100vh; /* Stellt sicher, dass die link-liste die volle Höhe des Viewports einnimmt */
+}
+
+.Inhalt {
+    flex-grow: 1; /* Lässt den Inhalt den verbleibenden Platz einnehmen */
+    outline: solid;
+	width: 79%;
+	max-width: 79%;
+    border-width: 5px;
+    margin: 0%;
+    margin-left: 19.5%; /* Platz für die fixierte link-liste schaffen */
+    box-sizing: border-box;
+	overflow: hidden;
+    order: 2; /* Stelle den Inhalt an die zweite Position */
+}
+
+.Text
+	{	color: #4b3302;
+		width: 90%;
+		margin-right: 5%;
+		margin-left: 5%;
+		font-size: 110%;
+		height: 90%;
+		 overflow: hidden; 
+		}
+		
+.Bild-gross
+	{
+		width: 100%;
+		margin-top: 5%;
+		margin-bottom: -4%;
+		outline: 0.1em solid black;
+		} 
+	
+
+
+.Container
+	{
+	float: left;
+	width: 50%;
+	outline: 0.1em solid black;
+	height: 50%;
+	max-height: 25em;
+	overflow: hidden;
+	margin-bottom: 8%;
+	}
+
+.Bilderrahmen
+	{
+		float: right;
+		width: 50%;
+		outline: 0.1em solid black;
+		margin-bottom: 8%;
+
+	}
+.Bild
+ {
+ 		
+ 	   width: 95%;
+		margin-right: 2.5%;
+		margin-left: 2.5%;
+		margin-bottom: 2.5%;
+		margin-top: 2.5%;
+ 	}
+ 	
+
+@media only screen and (max-width: 500px) 
+			{
+				.Bilderrahmen
+				 {
+					width: 100%	;	 	
+				 	}
+				
+				
+				.Container
+					{
+						width: 100%;
+						margin-bottom: 0.00%;
+					}
+			.link-links, .link-mitte ,.link-rechts
+					{
+						width: 100%;
+						float: inherit;			
+						text-align: left;
+						font-size: 120%;
+						margin-top: 8%;
+					}

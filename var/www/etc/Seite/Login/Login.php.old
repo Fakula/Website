@@ -1,0 +1,80 @@
+<?php
+// Sicherheitsmaßnahmen für Session-Cookies
+ini_set('session.cookie_secure', 1);
+ini_set('session.cookie_httponly', 1);
+
+session_start();
+
+// CSRF-Token generieren, falls es noch nicht existiert
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+
+function displayLoginForm() {
+    echo '
+    <html>
+    <body>
+        <form method="post">
+            <p>Bitte geben Sie Ihren Benutzernamen und Ihr Passwort ein:</p>
+            <input type="hidden" name="csrf_token" value="' . $_SESSION['csrf_token'] . '">
+            <label for="username">Benutzername:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Passwort:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit" name="login">Login</button>
+        </form>
+    </body>
+    </html>
+    ';
+}
+
+if (!isset($_SESSION['token'])) {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['accept']) && hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
+        $_SESSION['token'] = bin2hex(random_bytes(32));
+        echo "Session-Token gesetzt: " . $_SESSION['token'];
+        displayLoginForm();
+    } else {
+        echo '
+        <html>
+        <body>
+            <form method="post">
+                <p>Für den Login wird ein Session-Token gesetzt (siehe Datenschutzerklärung).</p>
+                <input type="hidden" name="csrf_token" value="' . $_SESSION['csrf_token'] . '">
+                <button type="submit" name="accept">Annehmen</button>
+            </form>
+        </body>
+        </html>
+        ';
+    }
+} else {
+    if (!isset($_SESSION['user'])) {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login']) && hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
+            $username = filter_var($_POST['username'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $password = $_POST['password'];
+
+            // Beispiel-Hash für das Passwort "123" (normalerweise aus einer Datenbank)
+            $stored_hash = password_hash('123', PASSWORD_DEFAULT);
+
+            if (password_verify($password, $stored_hash)) {
+                // Benutzername dem Token zuweisen
+                $_SESSION['user'] = $username;
+                echo "Benutzername: " . htmlspecialchars($username) . " wurde dem Token zugewiesen.<br>";
+                echo "Session-Token: " . $_SESSION['token'];
+            } else {
+                echo "Ungültiger Benutzername oder Passwort.";
+                displayLoginForm();
+            }
+        } else {
+            displayLoginForm();
+        }
+    } else {
+        echo "Hallo " . htmlspecialchars($_SESSION['user']);
+    }
+}
+
+// Debugging-Ausgaben
+echo '<pre>';
+print_r($_POST);
+print_r($_SESSION);
+echo '</pre>';
+?>

@@ -1,0 +1,150 @@
+/* Container für Flexbox */
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100vh; /* Höhe auf die gesamte Ansichtshöhe setzen */
+}
+
+/* Link-Liste */
+.link-liste {
+    order: 1;
+    flex: 0 0 20%; /* Feste Breite von 20% */
+    overflow: hidden;
+    border-style: solid;
+    border-width: 5px;
+    height: 100%; /* Höhe auf 100% setzen */
+}
+
+/* Inhalt */
+.Inhalt {
+    order: 2;
+    flex: 1; /* Nimmt den restlichen Platz ein */
+    border-style: solid;
+    border-width: 5px;
+    height: 100%; /* Höhe auf 100% setzen */
+}
+
+/* Allgemeine Stile */
+body { 
+    border: 0.1em solid #91C99B;
+    padding-top: 1em;
+    max-width: 100em; 
+    text-align: justify; 
+    margin-left: auto;
+    margin-right: auto; 
+    font-family: Georgia, serif;
+    background-color: whitesmoke;
+    color: #4b3302;
+}
+
+section { 
+    width: 60em;
+    max-width: 100%;
+    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto; 
+    background-color: whitesmoke;
+    color: #4b3302;
+    overflow: hidden;
+    float: center;
+}
+
+h2 {
+    width: 99%;
+    float: inherit;	
+    color: #4b3302;
+    font-variant: small-caps;
+    font-family: Garamond, serif;
+    font-size: 220%;
+    text-align: center;
+    background-color: whitesmoke;
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h3 {
+    clear: both;
+    width: calc(100% - 0.4em);
+    padding: 0.2em; 
+    float: inherit;
+    background-color: whitesmoke;
+    text-align: center;
+    margin-top: 8%;
+    margin-bottom: 3%;
+}
+
+/* Separat vom Rest damit der CSS-Validator nicht durcheinanderkommt */
+body > ul > li > a:first-child { -moz-border-radius: 10px; }
+h2 { -moz-border-radius: 1em; }
+h3 { -moz-border-radius: 1em; }
+
+.link-links, .link-mitte, .link-rechts {
+    width: 100%;
+    float: left;			
+    text-align: left;
+    clear: both;
+    border-style: solid;
+}
+
+.Text {
+    color: #4b3302;
+    width: 90%;
+    margin-right: 5%;
+    margin-left: 5%;
+    font-size: 110%;
+    height: 90%;
+    overflow: hidden; 
+}
+
+.Bild-gross {
+    width: 100%;
+    margin-top: 5%;
+    margin-bottom: -4%;
+    outline: 0.1em solid black;
+}
+
+.Container {
+    float: left;
+    width: 50%;
+    outline: 0.1em solid black;
+    height: 50%;
+    max-height: 25em;
+    overflow: hidden;
+    margin-bottom: 8%;
+}
+
+.Bilderrahmen {
+    float: right;
+    width: 50%;
+    outline: 0.1em solid black;
+    margin-bottom: 8%;
+}
+
+.Bild {
+    width: 95%;
+    margin-right: 2.5%;
+    margin-left: 2.5%;
+    margin-bottom: 2.5%;
+    margin-top: 2.5%;
+}
+
+@media only screen and (max-width: 500px) {
+    .Bilderrahmen {
+        width: 100%;
+    }
+    
+    .Container {
+        width: 100%;
+        margin-bottom: 0.00%;
+    }
+    
+    .link-links, .link-mitte, .link-rechts {
+        width: 100%;
+        float: inherit;			
+        text-align: left;
+        font-size: 120%;
+        margin-top: 8%;
+    }
+}

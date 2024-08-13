@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css" type="text/css">
+  <title>Monis Steinwelt</title>
+</head>
+
+<body>
+<section>
+ <div>
+	<h2>Monis Steinwelt.</h2>
+</div>
+
+<div class="link-liste">
+<p class="link-mitte" ><a href="index.html">Impressum/Kontakt</a></p>
+</div>
+
+
+</body>
+</html>

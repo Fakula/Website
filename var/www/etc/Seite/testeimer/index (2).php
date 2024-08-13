@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css" type="text/css">
+  <title>Testseite</title>
+</head>
+
+<body>
+<section>
+
+ <div>
+	<h2>Testseite.</h2>
+</div>
+
+<div class="link-liste">
+<a class="link-links" href="?url=Hauptseite">Hauptseite</a>
+<a class="link-links" href="?url=Kalender">Kalender</a>
+<a class="link-links" href="?url=Blog">Blog</a>
+<a class="link-links" href="?url=Linkliste">Linkliste</a>
+<a class="link-links" href="?url=Impressum">Impressum/Kontakt</a>
+<a class="link-links" href="?url=Web-info">Web-Info</a>
+</div>
+<div class= "Inhalt">
+<?php 
+require '../etc/befehle.php';
+ if (!empty($_GET['url'])){ 
+ 	$seite=$_GET['url'];
+	switch ($seite) {
+		case "Hauptseite":
+			require "../etc/Seite/Hauptseite.php";
+			break;		
+		case "Kalender":
+			require '../etc/Seite/kalender.html';
+			break;
+		case "Blog":
+			require "../etc/Seite/Blog.html";
+			break;
+		case "Linkliste":
+			require "../etc/Seite/Linkliste.html";
+			break;
+		case "Impressum":
+			require '../etc/Seite/impressum.html';
+			break;
+		case "Web-Info":
+			require "../etc/Seite/Web-Info.html";
+			break;
+		default:
+			echo "leer";
+	}
+ }
+?>
+</div>
+
+
+
+</body>
+</html>

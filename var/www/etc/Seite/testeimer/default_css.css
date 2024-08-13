@@ -1,0 +1,153 @@
+/* body */
+body { 
+	border: 0.1em solid #91C99B;
+	padding-top: 1em;
+	max-width: 100em; 
+	text-align: justify; 
+	margin-left: auto;
+	margin-right: auto; 
+	font-family: Georgia, serif;
+	background-color: whitesmoke;
+	color: #4b3302;
+}
+
+/* section */
+section { 
+	width: 60em;
+	max-width: 100%;
+	margin: 0 auto;
+	background-color: whitesmoke;
+	color: #4b3302;
+	overflow: hidden;
+}
+
+/* h1 */
+h1 {
+	width: 99%;
+	color: #4b3302;
+	font-variant: small-caps;
+	font-family: Garamond, serif;
+	font-size: 330%;
+	text-align: center;
+	background-color: whitesmoke;
+	margin-top: 0;
+	margin: 0 auto;
+}
+
+/* h2 */
+h2 {
+	width: 99%;
+	color: #4b3302;
+	font-variant: small-caps;
+	font-family: Garamond, serif;
+	font-size: 220%;
+	text-align: center;
+	background-color: whitesmoke;
+	margin-top: 0;
+	margin: 0 auto;
+	-moz-border-radius: 1em;
+}
+
+/* h3 */
+h3 {
+	clear: both;
+	width: calc(100% - 0.4em);
+	padding: 0.2em; 
+	background-color: whitesmoke;
+	text-align: center;
+	margin-top: 8%;
+	margin-bottom: 3%;
+	-moz-border-radius: 1em;
+}
+
+/* Separat vom Rest damit der CSS-Validator nicht durcheinanderkommt */
+body > ul > li > a:first-child { -moz-border-radius: 10px; }
+
+/* link-liste */
+.link-liste {
+	width: 17%;	
+	overflow: hidden;
+	float: left;
+	border-style: solid;
+	border-width: 5px;
+	height: 50em;
+}
+
+/* link-links, link-mitte, link-rechts */
+.link-links, .link-mitte, .link-rechts {
+	width: 100%;
+	float: left;			
+	text-align: left;
+	clear: both;
+	border-style: solid;
+}
+
+/* Inhalt */
+.Inhalt {
+	width: 80%; 
+	float: left;
+	border-style: solid;
+	border-width: 5px;
+}
+
+/* Text */
+.Text {
+	color: #4b3302;
+	width: 90%;
+	margin-right: 5%;
+	margin-left: 5%;
+	font-size: 110%;
+	height: 90%;
+	overflow: hidden; 
+}
+
+/* Bild-gross */
+.Bild-gross {
+	width: 100%;
+	margin-top: 5%;
+	margin-bottom: -4%;
+	outline: 0.1em solid black;
+}
+
+/* Container */
+.Container {
+	float: left;
+	width: 50%;
+	outline: 0.1em solid black;
+	height: 50%;
+	max-height: 25em;
+	overflow: hidden;
+	margin-bottom: 8%;
+}
+
+/* Bilderrahmen */
+.Bilderrahmen {
+	float: right;
+	width: 50%;
+	outline: 0.1em solid black;
+	margin-bottom: 8%;
+}
+
+/* Bild */
+.Bild {
+	width: 95%;
+	margin: 2.5%;
+}
+
+/* Media Queries */
+@media only screen and (max-width: 500px) {
+	.Bilderrahmen {
+		width: 100%;
+	}
+	.Container {
+		width: 100%;
+		margin-bottom: 0.00%;
+	}
+	.link-links, .link-mitte, .link-rechts {
+		width: 100%;
+		float: inherit;			
+		text-align: left;
+		font-size: 120%;
+		margin-top: 8%;
+	}
+}

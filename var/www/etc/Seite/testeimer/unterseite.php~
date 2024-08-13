@@ -1,0 +1,71 @@
+<?php
+
+$Artnr=intval($_GET['ArtNR']);
+$querry= "SELECT `Datum` , `Ueberschrift` , `Bildbeschreibung` , `Text` , `Sichtbar` , `delete` 
+		FROM `Hauptseite` WHERE `Artnr` =".$Artnr;
+$Content=mysqli_query ($mysqli, $querry);
+if (! $Content){
+	die('Ungültige Abfrage: ' . mysqli_error());
+}
+$zeile = mysqli_fetch_array($Content,MYSQL_ASSOC);
+
+$sichtbar=$zeile['Sichtbar'];
+$delete=$zeile['delete'];
+if ($sichtbar=='1' && !$delete=='1')
+	{
+	$Datum=$zeile['Datum'];
+	$Ueberschrift=$zeile['Ueberschrift'];
+	$Bildbeschreibung=$zeile['Bildbeschreibung'];
+	$Text=$zeile['Text'];
+	$Bild=$Artnr.'/'.$Artnr;
+	}
+?>
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8"/>
+  <link rel="stylesheet" href="style.css">
+  <title>Monis Steinwelt Artikel NR <?php echo $Artnr;?></title>
+</head>
+
+<body>
+
+<section>
+<header>
+<h2>Monis Steinwelt</h2>
+</header>
+<nav>
+	<div class="link-liste">
+		<p class="link-rechts" ><a href="index.php">nächster Artikel</a></p>
+		<p class="link-mitte"    ><a href="index.php">Zurück zur hauptseite</a></p>
+		<p class="link-links"    ><a href="index.php">Vorheriger Artikel</a></p>
+	</div>
+</nav>
+
+<article>
+<h3><?php if ($sichtbar=='1' && !$delete=='1')
+	{ echo $Ueberschrift;}
+	else {echo "hier gibts nichts zu sehen, weitergehen";}
+	?></h3>
+<div class="Bild-gross">
+	<p><?php echo $Text;?></p>
+</div>
+
+<?php if ($sichtbar=='1' && !$delete=='1')
+	{
+		echo '<img class="Bild" src="Bilder/'.$Bild.'" alt="'.$Bildbeschreibung.'">';
+	}
+else {
+	echo '<img class="Bild-gross" src="mobile-home-156914_1280.png" alt="" >';
+	}
+?>
+<img class="Bild-gross" src="mobile-home-156914_1280.png" alt="" >
+</article>
+
+</section>
+<footer>
+            <p class="footer">Impressum | Kontakt </p>
+</footer>
+</body>
+</html>
+<?php mysqli_free_result( $Content );?>
