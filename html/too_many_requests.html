@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Too Many Requests</title>
+    <meta http-equiv="refresh" content="2;url=/" />
+    <script>
+        // Countdown-Funktion
+        function startCountdown(duration, display) {
+            var timer = duration, seconds;
+            setInterval(function () {
+                seconds = parseInt(timer % 60, 10);
+                display.textContent = seconds;
+
+                if (--timer < 0) {
+                    timer = duration;
+                }
+            }, 1000);
+        }
+
+        window.onload = function () {
+            var countdownDuration = 2, // Dauer des Countdowns in Sekunden
+                display = document.querySelector('#countdown');
+            startCountdown(countdownDuration, display);
+        };
+    </script>
+</head>
+<body>
+    <h1>Wilkommen auf meiner "Too Many Requests" Seite</h1>
+    <p>Normalerweise solltest du diese nicht sehen.</p>
+    <p>Hab bitte etwas Geduld mit den alten Pferden.</p>
+    <p>Du wirst in <span id="countdown">2</span> Sekunden zurückgeleitet...</p>
+</body>
+</html>
+
