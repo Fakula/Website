@@ -1,6 +1,39 @@
+
+    <?php
+    if (!isset($_COOKIE['user_data'])) {
+        echo '<form method="POST" action="/?url=Login">
+                <input type="hidden" name="csrf_token" value="' . $_SESSION['csrf_token'] . '">
+                <label for="remember_me">Vergiss mich nicht</label>
+                <input type="checkbox" id="remember_me" name="remember_me" value="true">
+                <button type="submit" name="accept_cookies" value="gib keks!">Accept Cookies</button>
+              </form>';
+    }
+
+
+    if (isset($_COOKIE['user_data']) || json_decode($_COOKIE['user_data'])->User === 'Null') {
+        echo '<form method="POST" action="/?url=Login">
+                <input type="hidden" name="csrf_token" value="' . $_SESSION['csrf_token'] . '">
+                <label for="uname">Benutzername</label>
+                <input type="text" id="uname" name="uname" required>
+                <label for="psw">Passwort</label>
+                <input type="password" id="psw" name="psw" required>
+                <button type="submit" name="login_button">Login</button>
+              </form>';
+    }
+   
+
+
+
+    ?>
+
+
+
+
+
+
 <?php 
 
-
+/*
 
 if (session_status() == PHP_SESSION_ACTIVE && !isset($_SESSION['user']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
     // CSRF-Token überprüfen und bereinigen
@@ -36,7 +69,7 @@ if (session_status() == PHP_SESSION_NONE) {
 if (session_status() == PHP_SESSION_ACTIVE && !isset($_SESSION['user'])) {
     // Wenn eine Session aktiv ist, aber kein Benutzer eingeloggt ist, zeige das Login-Formular
     echo '
-    <form action="login.php" method="post">
+    <form action="/?url=Login" method="post">
         <input type="hidden" name="csrf_token" value="' . htmlspecialchars($_SESSION['csrf_token']) . '">
         <label for="username">Benutzername:</label>
         <input type="text" id="username" name="username" required><br>
@@ -48,7 +81,7 @@ if (session_status() == PHP_SESSION_ACTIVE && !isset($_SESSION['user'])) {
 
 
 
-
+*/
 
 
 

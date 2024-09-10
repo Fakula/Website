@@ -1,55 +1,23 @@
 <?php
 
 
-if (isset($_COOKIE['cookies_accepted']) && $_COOKIE['cookies_accepted'] == 'true') {
 
-     // Session starten, falls noch nicht gestartet
-     if (session_status() == PHP_SESSION_NONE) {
-        // Sicherheitsoptionen für Session-Cookies setzen
-        session_set_cookie_params([
-            'lifetime' => 0,
-            'path' => '/',
-            'domain' => 'dakachi.de',
-            'secure' => true,
-            'httponly' => true,
-            'samesite' => 'Lax'
-        ]);
-        
-        session_start();
-        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-    }
-    }else{
-
-
-
-        //in ner else, da hier sonst möglichkeit des angrifs eventuell ist
-    
-
-
-
-// setzen von session-cookie wenn verlangt.
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Validierung der POST-Daten
-    if (isset($_POST['accept_cookies']) && $_POST['accept_cookies'] === 'gib keks!') {
-
-        setcookie('cookies_accepted', 'true', time() + (86400 * 30), "/"); // Cookie für 30 Tage setzen
-        header("Location: " . $_SERVER['PHP_SELF']);
-
-
-       
-            echo 'hier gibts nen Keks!';
-        }
-    }
-}
-
-
-require '../etc/Seite/befehle.php';
+ 
+//require '../etc/Seite/befehle.php';
 
 // Basisverzeichnis für die Seiten und CSS-Dateien
 $base_path = '../etc/Seite/';
+$backoffice = $base_path . "Backoffice/";
+$verbindungsaufbau = $backoffice . "Verbindungsaufbau.php";
+$Keksmeister = $backoffice . "Keksdealer.php";
+$Userlogin= $backoffice . "Userlogin.php";
+$Lassie = $backoffice . "Lassie.php";
 
-// Standard-CSS-Pfad
-$css_path = $base_path . 'style.css';
+require $Keksmeister;
+require $Lassie;
+
+
+
 
 // Liste der erlaubten Seiten
 $allowed_pages = ['Startseite', 'Katinka', 'Daniel', 'Maeuschen', 'Linkliste', 'Impressum', 'WebInfo','Login', 'Logout'];
@@ -62,7 +30,7 @@ $allowed_pages = ['Startseite', 'Katinka', 'Daniel', 'Maeuschen', 'Linkliste', '
 
 
 
-echo session_id();
+#echo session_id();
 
 
 // Überprüfen, ob 'url' gesetzt ist und bereinigen
@@ -79,42 +47,8 @@ if (!empty($_GET['url'])) {
 }
 
 // Debugging-Ausgabe
-echo "Seite: " . $seite . "<br>";
+#echo "Seite: " . $seite . "<br>";
 
-/*
-switch ($seite) {
-    case "Startseite":
-        $filepath = $base_path . "Startseite/Startseite.php";
-        break;		
-    case "Katinka":
-        $filepath = $base_path . 'Katinka/Katinka.php';
-        break;
-    case "Daniel":
-        $filepath = $base_path . "Daniel/Daniel.php";
-        break;
-    case "Maeuschen":
-        $filepath = $base_path . "Maeuschen/Maeuschen.php";
-        break;				
-    case "Linkliste":
-        $filepath = $base_path . "Linkliste/Linkliste.html";
-        break;
-    case "Impressum":
-        $filepath = $base_path . 'Impressum/impressum.html';
-        break;
-    case "WebInfo":
-        $filepath = $base_path . "Websiteinfo/WebInfo.php"; // Korrigierter Pfad
-        break;
-    case "Login":
-        $filepath = $base_path  . 'Login/Login.php';
-        break;
-    case "Logout":
-        $filepath = $base_path  . 'Logout/Logout.php';
-        break;
-    default:
-        $error_message = "404 - Ungültige URL, bitte Pfad überprüfen";
-        $seite = null;
-}
-*/
 
 // Neuer Code
 switch ($seite) {
@@ -150,11 +84,21 @@ switch ($seite) {
         $seite = null;
 }
 
-$filepath = $directory_path . "Site.php";
-$Stylepath = $directory_path."style.php";
+// Standard-CSS-Pfad
+$default_css_path = $base_path . 'style.php';
 
-if (file_exists($Stylepath)) {
-    include $Stylepath;
+if (file_exists($default_css_path)) {
+    include $default_css_path;
+} 
+
+
+
+$filepath = $directory_path . "Site.php";
+$stylepath = $directory_path. "style.php";
+
+if (file_exists($stylepath)) {
+    include $stylepath;
+
 } 
 
 
@@ -180,21 +124,30 @@ if ($seite && !file_exists($filepath)) {
   <title>DaKaChi Startseite</title>
 
   <style>
- 
+ @font-face {
+    font-family: 'Parisienne';
+    src: url('font.php?font=Parisienne') format('truetype');
+}
     body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
 }
+h1 {
+    font-family: 'Parisienne', Arial, sans-serif;
+    justify-content: center;
+    text-align: center;
+}
+
 
 section {
     width: 60%; /* Breite des übergeordneten Elements */
     margin: 0 auto;
-    background-color: whitesmoke;
-    color: #4b3302;
     overflow: hidden;
     display: flex;
     flex-direction: column;
+  background-color: <?php echo $background?>;
 }
 
 .layout-wrapper {
@@ -215,6 +168,8 @@ section {
     /* height: 100%;*/
     position: fixed; /* Fixierte Position */
     /*top: 0; *//* Positioniere das Element oben im Viewport */
+
+background-color: <?php echo $background?>;
 }
 
 
@@ -239,6 +194,7 @@ section {
     clear: both;
     border-style: solid;
     box-sizing: border-box;
+    word-wrap: break-word;
 }
 
 
@@ -310,10 +266,12 @@ if(!isset($_SESSION['user'])){
     }
 
 
-if (isset($_SESSION['token'])) {
-  
+
+    if (isset($_COOKIE['user_data'])) { 
     echo '<a class="link-links" href="?url=Logout">Logout</a>';
-}
+
+    }
+
 
 
 ?>

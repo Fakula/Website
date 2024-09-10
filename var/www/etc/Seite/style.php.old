@@ -1,0 +1,56 @@
+body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+section {
+    width: 80%;
+    margin: 0 auto;
+    background-color: whitesmoke;
+    color: #4b3302;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column; /* Ensure the section's children are stacked vertically */
+}
+
+.layout-wrapper {
+    display: flex;
+    flex-direction: row; /* Ensure the layout-wrapper's children are side by side */
+    flex-grow: 1; /* Allow the layout-wrapper to grow and fill the section */
+}
+
+.link-liste {
+    width: 15%;
+    overflow: hidden;
+    max-width: 15%;
+    outline: solid;
+    border-width: 5px;
+    margin: 0;
+    box-sizing: border-box;
+    order: 1;
+    position: fixed;
+    height: 100vh;
+}
+
+.Inhalt {
+    flex-grow: 1;
+    outline: solid;
+    width: 80%;
+    max-width: 80%;
+    border-width: 5px;
+    margin: 0;
+    margin-left: 19.5%;
+    box-sizing: border-box;
+    overflow: hidden;
+    order: 2;
+}
+
+.link-links, .link-mitte, .link-rechts {
+    width: 100%;
+    float: left;
+    text-align: left;
+    clear: both;
+    border-style: solid;
+}
