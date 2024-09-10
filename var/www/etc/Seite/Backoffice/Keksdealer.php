@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_COOKIE['user_data']) && iss
 $ldap_host = "ldaps://dc1.dakachi.de";
 #$ldap_host = "ldaps://192.168.178.2";
 $service_user = "Username";
-$service_password = "Password"; // Passwort des Service-Kontos
+$service_password = "Passw0rd"; // Passwort des Service-Kontos
 $base_dn = "dc=Dakachi,dc=de";
 $realm = 'DAKACHI.DE';
 
