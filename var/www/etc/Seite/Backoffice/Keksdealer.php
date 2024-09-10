@@ -82,8 +82,9 @@ $base_dn = "dc=Dakachi,dc=de";
 $realm = 'DAKACHI.DE';
 
 // Benutzerdaten aus POST-Request
-$user_cn =  $_POST['uname']; // Der Benutzername, den du über POST erhältst
-$user_password = $_POST['psw']; // Das Passwort, das der Benutzer eingegeben hat
+$user_cn = htmlspecialchars($_POST['uname'], ENT_QUOTES, 'UTF-8');
+$user_password = htmlspecialchars($_POST['psw'], ENT_QUOTES, 'UTF-8');
+
 
 // Verbindung zum LDAP-Server herstellen
 $ldap_conn = ldap_connect($ldap_host);
